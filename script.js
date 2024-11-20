@@ -200,29 +200,27 @@
                 angkot.length
             );
         
-            var angkotTerpilih = angkot[pilihAngkot - 1];
-            var daftarPenumpang = penumpang[angkotTerpilih.nama];
+            let angkotTerpilih = angkot[pilihAngkot - 1];
+            let daftarPenumpang = penumpang[angkotTerpilih.nama];
         
-            // Validasi maksimal penumpang
             if (daftarPenumpang.length >= 15) {
                 alert('Angkot ' + angkotTerpilih.nama + ' sudah penuh. Tidak bisa menambah penumpang.');
                 return;
             }
         
-            var daftarTujuan = 'Pilih tujuan perjalanan:\n';
-            var tujuanKeys = Object.keys(angkotTerpilih.tujuan);
+            let daftarTujuan = 'Pilih tujuan perjalanan:\n';
+            let tujuanKeys = Object.keys(angkotTerpilih.tujuan);
             tujuanKeys.forEach((tujuan, index) => {
                 daftarTujuan += (index + 1) + '. ' + tujuan + ' - Rp ' + angkotTerpilih.tujuan[tujuan].toLocaleString() + '\n';
             });
         
-            var pilihTujuan = mintaInputAngka(daftarTujuan + 'Masukkan nomor pilihan:', tujuanKeys.length);
-            var tujuanTerpilih = tujuanKeys[pilihTujuan - 1];
-            var harga = angkotTerpilih.tujuan[tujuanTerpilih];
+            let pilihTujuan = mintaInputAngka(daftarTujuan + 'Masukkan nomor pilihan:', tujuanKeys.length);
+            let tujuanTerpilih = tujuanKeys[pilihTujuan - 1];
+            let harga = angkotTerpilih.tujuan[tujuanTerpilih];
         
-            var namaPenumpang;
+            let namaPenumpang;
             do {
                 namaPenumpang = prompt('Masukkan nama penumpang:');
-                // Validasi nama unik
                 if (daftarPenumpang.some(p => p.nama === namaPenumpang)) {
                     alert('Nama sudah ada dalam angkot. Silakan gunakan nama lain.');
                     namaPenumpang = null; // Reset nama agar prompt muncul kembali
@@ -253,21 +251,21 @@
                 angkot.length
             );
 
-            var angkotTerpilih = angkot[pilihAngkot - 1];
-            var daftarPenumpang = penumpang[angkotTerpilih.nama];
+            let angkotTerpilih = angkot[pilihAngkot - 1];
+            let daftarPenumpang = penumpang[angkotTerpilih.nama];
 
             if (daftarPenumpang.length === 0) {
                 alert('Tidak ada penumpang di angkot ' + angkotTerpilih.nama + '.');
                 return;
             }
 
-            var penumpangList = 'Daftar penumpang:\n';
+            let penumpangList = 'Daftar penumpang:\n';
             daftarPenumpang.forEach((p, index) => {
                 penumpangList += (index + 1) + '. ' + p.nama + ' - ' + p.tujuan + '\n';
             });
 
-            var pilihPenumpang = mintaInputAngka(penumpangList + 'Masukkan nomor penumpang yang turun:', daftarPenumpang.length);
-            var penumpangTurun = daftarPenumpang.splice(pilihPenumpang - 1, 1)[0];
+            let pilihPenumpang = mintaInputAngka(penumpangList + 'Masukkan nomor penumpang yang turun:', daftarPenumpang.length);
+            let penumpangTurun = daftarPenumpang.splice(pilihPenumpang - 1, 1)[0];
 
             alert(
                 'Terima kasih, ' + penumpangTurun.nama + '!\n' +
@@ -277,13 +275,13 @@
         }
 
         function lihatPenghasilan() {
-            var sandi = prompt('Masukkan sandi admin untuk melihat penghasilan:');
-            if (sandi !== 'admin123') {
+            let sandi = prompt('Masukkan sandi admin untuk melihat penghasilan:');
+            if (sandi !== 'admin12345') {
                 alert('Sandi salah. Tidak dapat mengakses penghasilan.');
                 return;
             }
 
-            var laporan = 'Laporan Penghasilan Angkot:\n';
+            let laporan = 'Laporan Penghasilan Angkot:\n';
             angkot.forEach((a) => {
                 laporan += a.nama + ': Rp ' + a.penghasilan.toLocaleString() + '\n';
             });
@@ -291,13 +289,13 @@
         }
 
         function lihatPenumpang() {
-            var sandi = prompt('Masukkan sandi admin untuk melihat daftar penumpang:');
+            let sandi = prompt('Masukkan sandi admin untuk melihat daftar penumpang:');
             if (sandi !== 'admin123') {
                 alert('Sandi salah. Tidak dapat mengakses daftar penumpang.');
                 return;
             }
 
-            var laporan = 'Daftar Penumpang per Angkot:\n';
+            let laporan = 'Daftar Penumpang per Angkot:\n';
             angkot.forEach((a) => {
                 laporan += '\nAngkot ' + a.nama + ':\n';
                 penumpang[a.nama].forEach((p) => {
